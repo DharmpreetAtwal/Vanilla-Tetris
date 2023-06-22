@@ -19,7 +19,11 @@ public class GameManager : MonoBehaviour
     {
         plyManager.currentBlock =
             Instantiate(blockPrefabList[0], transform).GetComponent<BlockBehaviour>();
+        Color rndColor = colorList[Random.Range(0, colorList.Length)];
+        plyManager.currentBlock.changeColor(rndColor);
     }
+
+    // TODO: Make bounds work regardless of rotation
 
     public bool checkBounds(Vector2 pos)
     {
@@ -34,6 +38,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(plyManager.currentBlock.isPlaced)
+        {
+            SpawnBlock();
+        }
         
     }
 }
