@@ -17,11 +17,15 @@ public class GameManager : MonoBehaviour
 
     private void SpawnBlock()
     {
+        int rndIntBlock = Random.Range(0, blockPrefabList.Length);
         plyManager.currentBlock =
-            Instantiate(blockPrefabList[0], transform).GetComponent<BlockBehaviour>();
+            Instantiate(blockPrefabList[rndIntBlock],
+            transform).GetComponent<BlockBehaviour>();
+
         Color rndColor = colorList[Random.Range(0, colorList.Length)];
         plyManager.currentBlock.changeColor(rndColor);
     }
+
 
 
     public bool checkBounds(Vector2 pos)

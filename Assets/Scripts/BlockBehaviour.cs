@@ -20,9 +20,10 @@ public class BlockBehaviour : MonoBehaviour
         transform.position = (Vector2)transform.position + change;
     }
 
+
     public void BeginMove()
     {
-        InvokeRepeating("MoveDown", 0, 0.2f);
+        InvokeRepeating("MoveDown", 0, 0.4f);
         isPlaced = false;
     }
 
@@ -37,7 +38,9 @@ public class BlockBehaviour : MonoBehaviour
         if(collision.CompareTag("Bottom"))
         {
             StopMove();
-        } else if(collision.CompareTag("Block") && !isPlaced)
+            transform.position = (Vector2)transform.position + new Vector2(0, 1);
+        }
+        else if(collision.CompareTag("Block") && !isPlaced)
         {
             StopMove();
             transform.position = (Vector2)transform.position + new Vector2(0, 1);
