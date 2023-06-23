@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
         plyManager.currentBlock.changeColor(rndColor);
     }
 
-    // TODO: Make bounds work regardless of rotation
 
     public bool checkBounds(Vector2 pos)
     {
@@ -32,7 +31,7 @@ public class GameManager : MonoBehaviour
             return true;
         }
 
-        return false;
+        return true;
     }
 
     // Update is called once per frame

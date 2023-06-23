@@ -13,10 +13,6 @@ public class PlayerManager : MonoBehaviour
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-
-    // TODO: Fix movement system. First Box Collider should be moved through offset, if no collision, them move image
-
-    // Update is called once per frame
     void Update()
     {
         Vector2 change = new Vector2(0, 0);
@@ -25,13 +21,12 @@ public class PlayerManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) && !currentBlock.isPlaced)
         {
             change = new Vector2(-2, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.D) && !currentBlock.isPlaced)
+        } else if (Input.GetKeyDown(KeyCode.D) && !currentBlock.isPlaced)
         {
             change = new Vector2(2, 0);
 
-        // TODO: Rotation should change position of child blocks
-        } else if(Input.GetKeyDown(KeyCode.E))
+            // TODO: Rotation should change position of child blocks
+        } else if (Input.GetKeyDown(KeyCode.E))
         {
             currentBlock.gameObject.transform.Rotate(Vector3.back, 90);
         }
