@@ -24,17 +24,12 @@ public class PlayerManager : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.D) && !currentBlock.isPlaced)
         {
             change = new Vector2(2, 0);
-
-            // TODO: Rotation should change position of child blocks
         } else if (Input.GetKeyDown(KeyCode.E))
         {
             currentBlock.gameObject.transform.Rotate(Vector3.back, 90);
         }
 
-        if (gm.checkBounds(currentPos + change))
-        {
-            currentBlock.transform.position =
-            (Vector2)currentBlock.transform.position + change;
-        }
+        currentBlock.transform.position = (Vector2)currentBlock.transform.position + change;
+
     }
 }

@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public Color[] colorList;
     public GameObject[] blockPrefabList;
     private PlayerManager plyManager;
+    public GameObject[,] grid= new GameObject[14,11];
 
     // Start is called before the first frame update
     void Start()
@@ -24,18 +25,6 @@ public class GameManager : MonoBehaviour
 
         Color rndColor = colorList[Random.Range(0, colorList.Length)];
         plyManager.currentBlock.changeColor(rndColor);
-    }
-
-
-
-    public bool checkBounds(Vector2 pos)
-    {
-        if(pos.x >= -8 && pos.x <= 8)
-        {
-            return true;
-        }
-
-        return true;
     }
 
     // Update is called once per frame

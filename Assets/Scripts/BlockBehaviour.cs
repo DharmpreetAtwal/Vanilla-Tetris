@@ -10,21 +10,20 @@ public class BlockBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector2(0, 12);
+        transform.position = new Vector2(12, 22);
         BeginMove();
+    }
+    
+    public void BeginMove()
+    {
+        InvokeRepeating("MoveDown", 0, 0.4f);
+        isPlaced = false;
     }
 
     private void MoveDown()
     {
         Vector2 change = new Vector2(0, -1);
         transform.position = (Vector2)transform.position + change;
-    }
-
-
-    public void BeginMove()
-    {
-        InvokeRepeating("MoveDown", 0, 0.4f);
-        isPlaced = false;
     }
 
     public void StopMove()
@@ -35,22 +34,24 @@ public class BlockBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Bottom"))
+        if (collision.CompareTag("Bottom"))
         {
             StopMove();
             transform.position = (Vector2)transform.position + new Vector2(0, 1);
         }
-        else if(collision.CompareTag("Block") && !isPlaced)
+        else if (collision.CompareTag("Block") && !isPlaced)
         {
             StopMove();
             transform.position = (Vector2)transform.position + new Vector2(0, 1);
-        } else if (collision.CompareTag("LeftBound"))
+        }
+        else if (collision.CompareTag("LeftBound"))
         {
             transform.position = (Vector2)transform.position + new Vector2(2, 0);
-        } else if(collision.CompareTag("RightBound"))
+        }
+        else if (collision.CompareTag("RightBound"))
         {
             transform.position = (Vector2)transform.position + new Vector2(-2, 0);
-        } 
+        }
     }
 
     public void changeColor(Color col)
