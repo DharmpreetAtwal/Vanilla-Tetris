@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class TileBehaviour : MonoBehaviour
 {
+    // y =  (y - 1) / 2
+    // x = x / 2
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

@@ -6,8 +6,6 @@ using System.Collections.Generic;
 /// </summary>
 public class CameraResolution : MonoBehaviour
 {
-
-
     #region Pola
     private int ScreenSizeX = 0;
     private int ScreenSizeY = 0;
@@ -21,7 +19,7 @@ public class CameraResolution : MonoBehaviour
 
         if (Screen.width == ScreenSizeX && Screen.height == ScreenSizeY) return;
 
-        float targetaspect = 14.0f / 16.0f;
+        float targetaspect = 15.0f / 18.0f;
         float windowaspect = (float)Screen.width / (float)Screen.height;
         float scaleheight = windowaspect / targetaspect;
         Camera camera = GetComponent<Camera>();

@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallSpeed: 0
   isPlaced: 0
+  tile: {fileID: 8815041697834922344, guid: 05f6f37400fa54915919e62f15329736, type: 3}
 --- !u!1001 &4577193579930204947
 PrefabInstance:
   m_ObjectHideFlags: 0

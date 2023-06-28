@@ -10,10 +10,20 @@ public class BlockBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector2(12, 22);
+        transform.position = new Vector2(12, 36);
+        EnableTiles(false);
         BeginMove();
     }
-    
+
+    public void changeColor(Color col)
+    {
+        SpriteRenderer[] spriteList = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        for (int i = 0; i < spriteList.Length; i++)
+        {
+            spriteList[i].color = col;
+        }
+    }
+
     public void BeginMove()
     {
         InvokeRepeating("MoveDown", 0, 0.4f);
@@ -24,12 +34,6 @@ public class BlockBehaviour : MonoBehaviour
     {
         Vector2 change = new Vector2(0, -1);
         transform.position = (Vector2)transform.position + change;
-    }
-
-    public void StopMove()
-    {
-        CancelInvoke();
-        isPlaced = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -54,12 +58,24 @@ public class BlockBehaviour : MonoBehaviour
         }
     }
 
-    public void changeColor(Color col)
+    public void StopMove()
     {
-        SpriteRenderer[] spriteList = gameObject.GetComponentsInChildren<SpriteRenderer>();
-        for (int i=0; i< spriteList.Length; i++)
+        CancelInvoke();
+        isPlaced = true;
+        EnableTiles(true);
+    }
+
+    private void EnableTiles(bool value)
+    {
+        BoxCollider2D[] colliders =
+            gameObject.GetComponentsInChildren<BoxCollider2D>();
+        TileBehaviour[] scripts =
+            gameObject.GetComponentsInChildren<TileBehaviour>();
+
+        for (int i = 0; i < transform.childCount; i++)
         {
-            spriteList[i].color = col;
+            colliders[i].enabled = value;
+            scripts[i].enabled = value;
         }
     }
 
