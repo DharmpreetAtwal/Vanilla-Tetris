@@ -34,18 +34,16 @@ public class GameManager : MonoBehaviour
         GameObject block = plyManager.currentBlock.gameObject;
         if(plyManager.currentBlock.isPlaced)
         {
-            for(int i=0;i<block.transform.childCount; i++)
+            foreach(Transform tileChild in block.transform)
             {
-                GameObject tile = block.transform.GetChild(i).gameObject;
-                Vector2 point = gameObject.transform.TransformPoint(tile.transform.position);
-                int x = (int)point.x / 2;
-                int y = (int)point.y / 2;
-                grid[y, x] = tile;
+                Vector2 point = transform.TransformPoint(tileChild.position);
+                int x = Mathf.RoundToInt(point.x / 2);
+                int y = Mathf.RoundToInt(point.y / 2);
+                grid[y, x] = tileChild.gameObject;
             }
             SpawnBlock();
             CheckAlign();
         }
-        
     }
 
     private void CheckAlign()

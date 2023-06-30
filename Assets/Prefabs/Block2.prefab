@@ -52,7 +52,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallSpeed: 0
   isPlaced: 0
-  tile: {fileID: 8815041697834922344, guid: 05f6f37400fa54915919e62f15329736, type: 3}
 --- !u!50 &5469415506734439790
 Rigidbody2D:
   serializedVersion: 4
@@ -87,7 +86,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 2, y: 2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -124,11 +123,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8815041697834922345, guid: 05f6f37400fa54915919e62f15329736, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8815041697834922345, guid: 05f6f37400fa54915919e62f15329736, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8815041697834922345, guid: 05f6f37400fa54915919e62f15329736, type: 3}
       propertyPath: m_LocalPosition.z
@@ -186,11 +185,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8815041697834922345, guid: 05f6f37400fa54915919e62f15329736, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8815041697834922345, guid: 05f6f37400fa54915919e62f15329736, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8815041697834922345, guid: 05f6f37400fa54915919e62f15329736, type: 3}
       propertyPath: m_LocalPosition.z
@@ -248,11 +247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8815041697834922345, guid: 05f6f37400fa54915919e62f15329736, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8815041697834922345, guid: 05f6f37400fa54915919e62f15329736, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8815041697834922345, guid: 05f6f37400fa54915919e62f15329736, type: 3}
       propertyPath: m_LocalPosition.z
