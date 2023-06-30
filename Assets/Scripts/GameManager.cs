@@ -42,9 +42,35 @@ public class GameManager : MonoBehaviour
                 int y = (int)point.y / 2;
                 grid[y, x] = tile;
             }
-            print(grid);
             SpawnBlock();
+            CheckAlign();
         }
         
+    }
+
+    private void CheckAlign()
+    {
+        for(int row=0; row < grid.GetLength(0); row++)
+        {
+            int count = 0;
+            Color colorCheck;
+
+            if (grid[row, 0] != null)
+            {
+                colorCheck = grid[row, 0].GetComponent<SpriteRenderer>().color;
+            } else {continue;}
+
+            for (int col=0; col<grid.GetLength(1); col++)
+            {
+                GameObject tile = grid[row, col];
+                if (tile != null)
+                {
+                    Color tileColor = tile.GetComponent<SpriteRenderer>().color;
+                    if (tileColor == colorCheck) {count++;}
+                } else{ break; }
+            }
+
+            if(count == 12){ print("ALIGN " + row); }
+        }
     }
 }

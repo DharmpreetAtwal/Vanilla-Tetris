@@ -455,9 +455,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorList:
   - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 1, g: 1, b: 0, a: 1}
   blockPrefabList:
   - {fileID: 7498225551917203769, guid: a7481aa47e69d4dc4855778f39029389, type: 3}
   - {fileID: 6713555854234312663, guid: 4e8470f7ebd1c4f7ba6710b9ba3e26e1, type: 3}

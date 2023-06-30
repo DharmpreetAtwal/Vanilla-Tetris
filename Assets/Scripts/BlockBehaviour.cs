@@ -11,7 +11,7 @@ public class BlockBehaviour : MonoBehaviour
     void Start()
     {
         transform.position = new Vector2(12, 36);
-        EnableTiles(false);
+        //EnableTiles(false);
         BeginMove();
     }
 
@@ -40,13 +40,13 @@ public class BlockBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("Bottom"))
         {
-            StopMove();
             transform.position = (Vector2)transform.position + new Vector2(0, 1);
+            StopMove();
         }
         else if (collision.CompareTag("Block") && !isPlaced)
         {
-            StopMove();
             transform.position = (Vector2)transform.position + new Vector2(0, 1);
+            StopMove();
         }
         else if (collision.CompareTag("LeftBound"))
         {
@@ -62,21 +62,21 @@ public class BlockBehaviour : MonoBehaviour
     {
         CancelInvoke();
         isPlaced = true;
-        EnableTiles(true);
+        //EnableTiles(true);
     }
 
-    private void EnableTiles(bool value)
-    {
-        BoxCollider2D[] colliders =
-            gameObject.GetComponentsInChildren<BoxCollider2D>();
-        TileBehaviour[] scripts =
-            gameObject.GetComponentsInChildren<TileBehaviour>();
+    //private void EnableTiles(bool value)
+    //{
+    //    BoxCollider2D[] colliders =
+    //        gameObject.GetComponentsInChildren<BoxCollider2D>();
+    //    TileBehaviour[] scripts =
+    //        gameObject.GetComponentsInChildren<TileBehaviour>();
 
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            colliders[i].enabled = value;
-            scripts[i].enabled = value;
-        }
-    }
+    //    for (int i = 0; i < transform.childCount; i++)
+    //    {
+    //        colliders[i].enabled = value;
+    //        scripts[i].enabled = value;
+    //    }
+    //}
 
 }
