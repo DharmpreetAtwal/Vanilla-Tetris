@@ -8,6 +8,7 @@ TagManager:
   - RightBound
   - Bottom
   - Block
+  - Tile
   layers:
   - Default
   - TransparentFX

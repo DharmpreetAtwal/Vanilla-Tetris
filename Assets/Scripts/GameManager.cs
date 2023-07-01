@@ -64,11 +64,32 @@ public class GameManager : MonoBehaviour
                 if (tile != null)
                 {
                     Color tileColor = tile.GetComponent<SpriteRenderer>().color;
-                    if (tileColor == colorCheck) {count++;}
+                    if (tileColor == colorCheck) {count++;} else { break;  }
                 } else{ break; }
             }
 
-            if(count == 12){ print("ALIGN " + row); }
+            if(count == 12){ DeleteRow(row); MoveAboveTilesDown(row); }
+        }
+    }
+
+    private void DeleteRow(int row)
+    {
+        for(int col=0; col<grid.GetLength(1); col++){Destroy(grid[row, col]);}
+    }
+
+    private void MoveAboveTilesDown(int deletedRow)
+    {
+        for (int row=deletedRow; row<grid.GetLength(0) - 1; row++)
+        {
+            for(int col=0; col<grid.GetLength(1); col++)
+            {
+                if(grid[row + 1, col] != null)
+                {
+                    grid[row + 1, col].transform.position += new Vector3(0, -2, 0);
+                    grid[row, col] = grid[row + 1, col];
+                    grid[row + 1, col] = null;
+                }
+            }
         }
     }
 }

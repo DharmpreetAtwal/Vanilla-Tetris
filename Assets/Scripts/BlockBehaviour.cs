@@ -38,14 +38,17 @@ public class BlockBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //if (collision.CompareTag("Bottom") && !isPlaced)
         if (collision.CompareTag("Bottom"))
         {
             transform.position = (Vector2)transform.position + new Vector2(0, 1);
             StopMove();
         }
         else if (collision.CompareTag("Block") && !isPlaced)
+            //|| collision.CompareTag("Tile"))
         {
             transform.position = (Vector2)transform.position + new Vector2(0, 1);
+            //gameObject.GetComponent<PolygonCollider2D>().enabled = false;
             StopMove();
         }
         else if (collision.CompareTag("LeftBound"))
@@ -69,13 +72,13 @@ public class BlockBehaviour : MonoBehaviour
     //{
     //    BoxCollider2D[] colliders =
     //        gameObject.GetComponentsInChildren<BoxCollider2D>();
-    //    TileBehaviour[] scripts =
-    //        gameObject.GetComponentsInChildren<TileBehaviour>();
+    //    //TileBehaviour[] scripts =
+    //    //    gameObject.GetComponentsInChildren<TileBehaviour>();
 
     //    for (int i = 0; i < transform.childCount; i++)
     //    {
     //        colliders[i].enabled = value;
-    //        scripts[i].enabled = value;
+    //        //scripts[i].enabled = value;
     //    }
     //}
 
