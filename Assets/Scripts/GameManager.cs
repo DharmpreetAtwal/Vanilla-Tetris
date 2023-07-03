@@ -8,24 +8,36 @@ public class GameManager : MonoBehaviour
     public GameObject[] blockPrefabList;
     private PlayerManager plyManager;
     public GameObject[,] grid= new GameObject[15,12];
-
+    public BlockBehaviour nextBlock;
 
     // Start is called before the first frame update
     void Start()
     {
         plyManager = GameObject.Find("Player").GetComponent<PlayerManager>();
-        SpawnBlock();
+        plyManager.currentBlock = SpawnBlock();
+        nextBlock = SpawnNextBlock();
     }
 
-    private void SpawnBlock()
+    private BlockBehaviour SpawnBlock()
     {
         int rndIntBlock = Random.Range(0, blockPrefabList.Length);
-        plyManager.currentBlock =
+        BlockBehaviour block =
             Instantiate(blockPrefabList[rndIntBlock],
             transform).GetComponent<BlockBehaviour>();
 
         Color rndColor = colorList[Random.Range(0, colorList.Length)];
-        plyManager.currentBlock.changeColor(rndColor);
+        block.changeColor(rndColor);
+
+        return block;
+    }
+
+    private BlockBehaviour SpawnNextBlock()
+    {
+        BlockBehaviour block = SpawnBlock();
+        block.gameObject.transform.position = new Vector2(-8.5f, 25);
+        block.enabled = false;
+
+        return block;
     }
 
     // Update is called once per frame
@@ -41,7 +53,9 @@ public class GameManager : MonoBehaviour
                 int y = Mathf.RoundToInt(point.y / 2);
                 grid[y, x] = tileChild.gameObject;
             }
-            SpawnBlock();
+            plyManager.currentBlock = nextBlock;
+            plyManager.currentBlock.enabled = true;
+            nextBlock = SpawnNextBlock();
             CheckAlign();
         }
     }

@@ -9,7 +9,6 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         Vector2 change = new Vector2(0, 0);
-        Vector2 currentPos = currentBlock.transform.position;
 
         if (Input.GetKeyDown(KeyCode.A) && !currentBlock.isPlaced)
         {

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BlockBehaviour : MonoBehaviour
 {
-    public float fallSpeed;
     public bool isPlaced;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position = new Vector2(12, 36);
-        //EnableTiles(false);
+        gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+        EnableTiles(false);
         BeginMove();
     }
 
@@ -38,25 +38,17 @@ public class BlockBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.CompareTag("Bottom") && !isPlaced)
-        if (collision.CompareTag("Bottom"))
+        if((collision.CompareTag("Block")
+            || collision.CompareTag("Tile")
+            || collision.CompareTag("Bottom")) && !isPlaced)
         {
             transform.position = (Vector2)transform.position + new Vector2(0, 1);
             StopMove();
         }
-        else if (collision.CompareTag("Block") && !isPlaced)
-            //|| collision.CompareTag("Tile"))
-        {
-            transform.position = (Vector2)transform.position + new Vector2(0, 1);
-            //gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-            StopMove();
-        }
-        else if (collision.CompareTag("LeftBound"))
-        {
+        else if (collision.CompareTag("LeftBound")) {
             transform.position = (Vector2)transform.position + new Vector2(2, 0);
         }
-        else if (collision.CompareTag("RightBound"))
-        {
+        else if (collision.CompareTag("RightBound")) {
             transform.position = (Vector2)transform.position + new Vector2(-2, 0);
         }
     }
@@ -65,21 +57,20 @@ public class BlockBehaviour : MonoBehaviour
     {
         CancelInvoke();
         isPlaced = true;
-        //EnableTiles(true);
+        gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+        Destroy(gameObject.GetComponent<Rigidbody2D>());
+        EnableTiles(true);
     }
 
-    //private void EnableTiles(bool value)
-    //{
-    //    BoxCollider2D[] colliders =
-    //        gameObject.GetComponentsInChildren<BoxCollider2D>();
-    //    //TileBehaviour[] scripts =
-    //    //    gameObject.GetComponentsInChildren<TileBehaviour>();
+    private void EnableTiles(bool value)
+    {
+        BoxCollider2D[] colliders =
+            gameObject.GetComponentsInChildren<BoxCollider2D>();
 
-    //    for (int i = 0; i < transform.childCount; i++)
-    //    {
-    //        colliders[i].enabled = value;
-    //        //scripts[i].enabled = value;
-    //    }
-    //}
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            colliders[i].enabled = value;
+        }
+    }
 
 }
