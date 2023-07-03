@@ -19,9 +19,11 @@ public class PlayerManager : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.E))
         {
             currentBlock.gameObject.transform.Rotate(Vector3.back, 90);
+        } else if (Input.GetKeyDown(KeyCode.S))
+        {
+            change = new Vector2(0, -1);
         }
 
         currentBlock.transform.position = (Vector2)currentBlock.transform.position + change;
-
     }
 }
