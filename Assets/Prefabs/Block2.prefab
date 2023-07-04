@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf392bbde9d540749eaf314a80e2801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 0
   isPlaced: 0
 --- !u!50 &5469415506734439790
 Rigidbody2D:

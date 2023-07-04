@@ -18,7 +18,9 @@ public class PlayerManager : MonoBehaviour
             change = new Vector2(2, 0);
         } else if (Input.GetKeyDown(KeyCode.E))
         {
-            currentBlock.gameObject.transform.Rotate(Vector3.back, 90);
+            Vector2 center = currentBlock.gameObject.transform.position
+                + currentBlock.gameObject.transform.TransformDirection(new Vector3(2, 0, 0));
+            currentBlock.gameObject.transform.RotateAround(center, Vector3.back, 90);
         } else if (Input.GetKeyDown(KeyCode.S))
         {
             change = new Vector2(0, -1);
